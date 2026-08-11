@@ -1,0 +1,21 @@
+config XMFS_FS
+	tristate "XMFS (Log Structured Filesystem for UB) support"
+	help
+	  XMFS is a high-performance log-structured filesystem specifically
+	  designed for distributed storage environments. It leverages advanced
+	  hardware and transport technologies such as UB, URMA, CXL, PMEM,
+	  and HCCS to achieve ultra-low latency and high throughput.
+
+	  It provides robust crash consistency, efficient log management, and
+	  optimized data placement strategies for modern storage architectures.
+
+	  If unsure, say N.
+
+config XMFS_FS_URMA
+	bool "XMFS URMA support"
+	depends on XMFS_FS && CONFIG_UB_URMA && CONFIG_UB_UBASE
+	help
+	  Say Y here if you want to enable URMA (Unified Remote Memory Access)
+	  transport support for XMFS, allowing high-speed network communication
+	  and remote memory operations.
+	default n
